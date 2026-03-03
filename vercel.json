@@ -1,8 +1,13 @@
 {
+  "version": 2,
   "rewrites": [
     {
-      "source": "/loader/:path*",
-      "destination": "/public/:path*"
+      "source": "/loader/:file",
+      "destination": "/public/:file"
+    },
+    {
+      "source": "/lc",
+      "destination": "/public/Vanzhub"
     }
   ],
   "headers": [
@@ -11,7 +16,20 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "text/plain"
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/lc",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
         }
       ]
     }
