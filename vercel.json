@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/loader/:path*",
+      "destination": "/public/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/loader/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        }
+      ]
+    }
+  ]
+}
