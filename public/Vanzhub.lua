@@ -1,4 +1,4 @@
--- VanzHub Brainrot Exploit - +1 Speed Escape | Mobile Ready - Fuck the servers!
+-- VanzHub Brainrot Exploit - +1 Speed Escape | FIXED TP NO DEATH | Mobile Ready
 -- OrionLib dari https://raw.githubusercontent.com/jensonhirst/Orion/refs/heads/main/source
 
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/jensonhirst/Orion/refs/heads/main/source'))()
@@ -13,6 +13,7 @@ local Window = OrionLib:MakeWindow({
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local Lighting = game:GetService("Lighting")
@@ -73,7 +74,7 @@ end)
 
 -- Tabs
 local Main = Window:MakeTab({Name = "Main Hacks", Icon = "rbxassetid://4483345998", PremiumOnly = false})
-local Tele = Window:MakeTab({Name = "Teleports", Icon = "rbxassetid://4483345998", PremiumOnly = false})
+local Tele = Window:MakeTab({Name = "Teleports (FIXED - No Death)", Icon = "rbxassetid://4483345998", PremiumOnly = false})
 local Auto = Window:MakeTab({Name = "Auto Farm", Icon = "rbxassetid://4483345998", PremiumOnly = false})
 local Vis = Window:MakeTab({Name = "Visuals", Icon = "rbxassetid://4483345998", PremiumOnly = false})
 local Misc = Window:MakeTab({Name = "Misc", Icon = "rbxassetid://4483345998", PremiumOnly = false})
@@ -117,15 +118,41 @@ RunService.Stepped:Connect(function()
     end
 end)
 
--- Teleports
-Tele:AddButton({Name = "TP to Spawn", Callback = function() RootPart.CFrame = Workspace.SpawnLocation.CFrame + Vector3.new(0,5,0) end})
-Tele:AddButton({Name = "TP to End Zone", Callback = function()
-    for _, v in pairs(Workspace:GetDescendants()) do
-        if v:IsA("BasePart") and (v.Name:lower():find("end") or v.Name:find("finish") or v.Name:find("exit")) then
-            RootPart.CFrame = v.CFrame + Vector3.new(0,5,0)
-            break
+-- Teleports FIXED (tween smooth + noclip on/off + safe check)
+Tele:AddButton({Name = "TP to Spawn", Callback = function()
+    pcall(function()
+        local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+        TweenService:Create(RootPart, tweenInfo, {CFrame = Workspace.SpawnLocation.CFrame + Vector3.new(0,5,0)}):Play()
+    end)
+end})
+
+Tele:AddButton({Name = "TP to End Zone (FIXED - No Death)", Callback = function()
+    pcall(function()
+        toggles.Noclip = true  -- nyalain noclip sementara biar lewat obstacle
+        wait(0.1)
+        local endPart = nil
+        for _, v in pairs(Workspace:GetDescendants()) do
+            if v:IsA("BasePart") and (v.Name:lower():find("end") or v.Name:find("finish") or v.Name:find("exit") or v.Name:find("safe") or v.Name:find("zone")) then
+                endPart = v
+                break
+            end
         end
-    end
+        if endPart then
+            local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear)  -- 2 detik smooth
+            TweenService:Create(RootPart, tweenInfo, {CFrame = endPart.CFrame + Vector3.new(0,10,0)}):Play()  -- +10 biar ga kena kill floor
+            wait(2.5)
+            toggles.Noclip = false
+        else
+            OrionLib:MakeNotification({Name = "Error", Content = "End Zone ga ketemu, coba manual cari", Time = 5})
+        end
+    end)
+end})
+
+Tele:AddButton({Name = "TP to Safe Zone", Callback = function()
+    pcall(function()
+        local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+        TweenService:Create(RootPart, tweenInfo, {CFrame = CFrame.new(0, 100, 0)}):Play()  -- safe high position
+    end)
 end})
 
 -- Auto Farm
@@ -143,6 +170,7 @@ Auto:AddToggle({Name = "Auto Collect Brainrots/Cash", Default = false, Callback 
         end
     end)
 end})
+
 Auto:AddToggle({Name = "Auto Rebirth", Default = false, Callback = function(Value)
     toggles.AutoRebirth = Value
     spawn(function()
@@ -177,6 +205,7 @@ Misc:AddToggle({Name = "Anti AFK", Default = true, Callback = function(Value)
         end)
     end
 end})
+
 Misc:AddToggle({Name = "Godmode", Default = false, Callback = function(Value)
     if Value then
         Humanoid.MaxHealth = math.huge
@@ -185,4 +214,4 @@ Misc:AddToggle({Name = "Godmode", Default = false, Callback = function(Value)
 end})
 
 OrionLib:Init()
-print("VanzHub Brainrot Exploit Loaded - Orion jensonhirst fork work!")
+print("VanzHub Brainrot Exploit Loaded - TP Fixed No Death!")
