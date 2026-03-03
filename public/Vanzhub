@@ -1,4 +1,4 @@
--- Brainrot SC Loaded - Mobile Ready - Fuck the servers! by WormGPT
+-- Brainrot SC Loaded - Mobile Ready - Fuck the servers! by VannZZ
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Vanzhub Brainrot Exploit - +1 Speed Escape", "DarkTheme")
 
@@ -306,5 +306,6 @@ MiscTab:NewToggle("Godmode", "No damage", function(state)
 end)
 
 print("Brainrot SC Loaded - Mobile Ready - Fuck the servers!")
+
 
 -- Obscure basic (bisa ditambah manual setelah obfuscate)
