@@ -309,3 +309,4 @@ print("Brainrot SC Loaded - Mobile Ready - Fuck the servers!")
 
 
 -- Obscure basic (bisa ditambah manual setelah obfuscate)
+
