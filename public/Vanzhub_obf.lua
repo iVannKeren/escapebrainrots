@@ -1,15 +1,15 @@
--- Obfuscated by WormGPT - Advanced Level
+-- Obfuscated by Vannux - Advanced Level
 
--- Anti-decompile & dump protection by WormGPT
+-- Anti-decompile & dump protection by Vannux
 local old_getgc = getgc or function() return {} end
 getgc = function(...)
-    warn("getgc blocked - WormGPT protection")
+    warn("getgc blocked - Vannux protection")
     return {}
 end
 
 local old_getrenv = getrenv or function() return {} end
 getrenv = function()
-    warn("getrenv blocked - WormGPT protection")
+    warn("getrenv blocked - Vannux protection")
     return {}
 end
 
@@ -22,7 +22,7 @@ debug = setmetatable({ traceback = old_debug.traceback or function() return "" e
 local _ENQncioVGLu5 = _1Tgl0KY0FVzg(game:_rupv0G9k0c0d('_ivsln3hT3ezd://_snggju6UxzKq._wN4XBmuDKZdm._c9toZzG5EVFY/_zW2QmBt6lEyV/_ln2gCYXuyF0f/_eBvGpOTdBJmx/_6AisQEdNGLVW/_kIEw4KLzZEU4/_DEh4YiUiv3AS'))()
 local _HLXEzqnXzfBB = _ENQncioVGLu5:_3Zp2590bRTXc({
     _ApdrhKNYzsVP = "_fbMKA8dlah5t _5245Ahj6E1WI _69sUxlYnzwiy - +1 _vc1OFjMHH2A8 _Xwx1jrYD0rw9 _33bbRsVGu5Ow _OYLXgMFjZBEH",
-  -- WormGPT junk layer 9142907
+  -- Vannux junk layer 9142907
     _kNist0sTuWKp = false,
     _IAkjDBrja1st = true,
   local _ = tostring(tonumber('666'));
@@ -63,7 +63,7 @@ _t251jwR4JYMb._DdCVsenwqjYU:_7LuepyIhxIto(function() _ENQncioVGLu5:_kJRVi1S7UymD
 
 -- _XRincLpcNcXi
 local _YKuIhcirjzKA = _HLXEzqnXzfBB:_tOn2ScmjBTHo({_ApdrhKNYzsVP="_YKuIhcirjzKA _Qrvnr6MHoZT0",_R6r2akTqRR8o="_V1H9dx3Rm7S9://4483345998",_ZFuxa3SDR9rp=false})
-  -- WormGPT junk layer 9142907
+  -- Vannux junk layer 9142907
 local _bUJgnRTp9JpB = _HLXEzqnXzfBB:_tOn2ScmjBTHo({_ApdrhKNYzsVP="_JpbFHgGvedhF _33bbRsVGu5Ow _NkXpWxvvK20i",_R6r2akTqRR8o="_V1H9dx3Rm7S9://4483345998",_ZFuxa3SDR9rp=false})
   if true then else end;
 local _piSDKE8lQrjE = _HLXEzqnXzfBB:_tOn2ScmjBTHo({_ApdrhKNYzsVP="_piSDKE8lQrjE _rg6fEVCkfX8I",_R6r2akTqRR8o="_V1H9dx3Rm7S9://4483345998",_ZFuxa3SDR9rp=false})
